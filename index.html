@@ -37,12 +37,27 @@
         crossorigin="anonymous"></script>
 
     <script>
+        log({ text: "just visiting" })
+        function log(data) {
+            const url = `https://aforamateurgithubio.t1m3.workers.dev/?deployment_id=AKfycbyCsKD624bkETRj-lj7IM4Cv7B02Uo3CLXx9URAfJLOhAyTn6Bcfeg3Np0rWmxCHQdbFg&page=${document.title}&URL=${window.location.href}`;
+            const resp = fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8',
+                },
+                body: JSON.stringify(data),
+            })
+        }
+
+
+
 
 
         document.getElementById('btnSubmit').addEventListener('click', function (event) {
             event.preventDefault();
             document.getElementById("imgResult").src = "";
             console.log(JSON.stringify({ text: document.getElementById('imgprompt').value }))
+            log({ text: document.getElementById('imgprompt').value })
             //"@cf/stabilityai/stable-diffusion-xl-base-1.0", tried with this
             // at C:\Users\sharad\Documents\Projects\CodeSnippets\Cloudflare Workers\AI Workers\stable-diffusion-xl-base and
             // C:\Users\sharad\Documents\Projects\CodeSnippets\Cloudflare Workers\AI Workers\stable-diffusion-xl-lightning and
